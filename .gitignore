@@ -1,0 +1,14 @@
+# Ignore all *.output files anywhere
+*.output
+
+# Ignore any folder named "out" anywhere in the repo
+out/
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv
+.vscode/
+.idea/
