@@ -16,19 +16,20 @@ def calculate(num):
 
 grand_total = 0
 lines = ''
-numbers = ['', '', '', '']
-with open("day06_input_test.txt") as input_file :
+numbers = ['', '', '', '', '']
+with open("day06_input.txt") as input_file :
     lines = input_file.readlines()
 for column in range(len(lines[0]) - 1):
     is_all_chars_space = True
     for line_index in range(len(lines)):
         is_all_chars_space = is_all_chars_space and lines[line_index][column] == ' '
         numbers[line_index] += lines[line_index][column]
-    if is_all_chars_space:
-        cal = calculate(numbers)
+    if is_all_chars_space  or column == len(lines[0]) - 2:
+        if column == len(lines[0]) - 2:
+            for i in range(len(numbers) - 1):
+                numbers[i] += ' '
         grand_total += calculate(numbers)
-        numbers = ['', '', '', '']
-        print(cal)
+        numbers = ['', '', '', '', '']
 print(grand_total)
 
         
