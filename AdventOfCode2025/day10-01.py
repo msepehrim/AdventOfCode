@@ -38,12 +38,14 @@ class Diagram:
                 self.button_number.append(button_number)
         def get_min(self, goal):
             for i in range(1, len(self.button_number)):
-                comb = combinations(self.button_number, i)
-                res = 0
-                for c in comb:
-                    res = res ^ int(c)
-                if res == goal:
-                    return i
+                combs = combinations(self.button_number, i)
+                
+                for comb in combs:
+                    res = 0
+                    for c in comb:
+                        res = res ^ c
+                    if res == goal:
+                        return i
             return None
 
 
@@ -51,14 +53,9 @@ class Diagram:
     class Joltage:
         def __init__(self, line) -> None:
             self.joltage = line.split(' ')[-1].strip()
-    
-    # def set(self):
-    #     self.set_lights()
 
-    # def set_lights(self):
-    #     self.light.set()
 
-with open("day10_input_test.txt") as input_file:
+with open("day10_input.txt") as input_file:
     lines = input_file.readlines()
 
 min_list = []
@@ -66,4 +63,5 @@ for line in lines:
     diagram = Diagram(line)
     min_list.append(diagram.get_min())
 print(min_list)
+print(sum(min_list))
     
